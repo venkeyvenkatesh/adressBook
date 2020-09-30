@@ -1,0 +1,13 @@
+C:\Users\Administrator\source\repos\adressBook\adressBook\bin\Debug\netcoreapp3.1\adressBook.exe
+C:\Users\Administrator\source\repos\adressBook\adressBook\bin\Debug\netcoreapp3.1\adressBook.deps.json
+C:\Users\Administrator\source\repos\adressBook\adressBook\bin\Debug\netcoreapp3.1\adressBook.runtimeconfig.json
+C:\Users\Administrator\source\repos\adressBook\adressBook\bin\Debug\netcoreapp3.1\adressBook.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\adressBook\adressBook\bin\Debug\netcoreapp3.1\adressBook.dll
+C:\Users\Administrator\source\repos\adressBook\adressBook\bin\Debug\netcoreapp3.1\adressBook.pdb
+C:\Users\Administrator\source\repos\adressBook\adressBook\obj\Debug\netcoreapp3.1\adressBook.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\adressBook\adressBook\obj\Debug\netcoreapp3.1\adressBook.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\adressBook\adressBook\obj\Debug\netcoreapp3.1\adressBook.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\adressBook\adressBook\obj\Debug\netcoreapp3.1\adressBook.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\adressBook\adressBook\obj\Debug\netcoreapp3.1\adressBook.dll
+C:\Users\Administrator\source\repos\adressBook\adressBook\obj\Debug\netcoreapp3.1\adressBook.pdb
+C:\Users\Administrator\source\repos\adressBook\adressBook\obj\Debug\netcoreapp3.1\adressBook.genruntimeconfig.cache
