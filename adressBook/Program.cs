@@ -61,6 +61,8 @@ namespace adressBook
             displayContact();
             editContact("venkey");
             displayContact();
+            deleteContact("venkey");
+            displayContact();
            
         }
 
@@ -77,6 +79,22 @@ namespace adressBook
                     Console.WriteLine("Enter the new Number for : "+firstName);
                     // phoneBook[firstName]= Console.ReadLine();
                     temp.setPhoneNumber(Console.ReadLine());
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes the contact.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        public static void deleteContact(string firstName)
+        {
+            foreach (var temp in list)
+            {
+                if (temp.getFirstName().Equals(firstName))
+                {
+                    list.Remove(temp);
                     break;
                 }
             }
