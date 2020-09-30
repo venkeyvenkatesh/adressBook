@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace adressBook
 {
@@ -36,15 +37,35 @@ namespace adressBook
             this.emailId = emailId;
         }
 
+        
+        /// <summary>
+        /// Gets the first name.
+        /// </summary>
+        /// <returns></returns>
+        public string getFirstName()
+        {
+            return this.firstName;
+
+        }
 
         /// <summary>
-        /// Displays the contact.
+        /// Gets the phone number.
         /// </summary>
-        public void displayContact()
+        /// <returns></returns>
+        public string getPhoneNumber()
         {
-            Console.WriteLine("Name : " + this.firstName + "  Contact No : " + this.phoneNumber);
+            return this.phoneNumber;
         }
-       // Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+        /// <summary>
+        /// Sets the phone number.
+        /// </summary>
+        public void setPhoneNumber(string phoneNumber)
+        {
+            this.phoneNumber = phoneNumber;
+        }
+        
+      
 
 
 
