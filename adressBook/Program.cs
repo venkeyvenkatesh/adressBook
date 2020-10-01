@@ -8,12 +8,6 @@ namespace adressBook
     class Program
     {
 
-
-        /// <summary>
-        /// The list
-        /// </summary>
-        static List<contactBook> list = new List<contactBook>();
-
         /// <summary>
         /// Defines the entry point of the application.
         /// </summary>
@@ -23,92 +17,43 @@ namespace adressBook
 
             Console.WriteLine("Welcome to Address Book program");
 
-            int n;
-            Console.WriteLine("Enter the number of contacts : ");
-            n = Convert.ToInt32(Console.ReadLine());
-            contactBook[] contacts = new contactBook[n];
-            for (int i = 0; i < n; i++)
+            int option;
+            peopleBook obj = new peopleBook();
+
+            do
             {
-                Console.WriteLine("Enter the first name");
-                string firstName = Console.ReadLine();
+                Console.WriteLine("Choose Your Option");
+                Console.WriteLine("1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit");
 
-                Console.WriteLine("Enter the last name");
-                string lastName = Console.ReadLine();
+                option = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine("Enter the city name");
-                string city = Console.ReadLine();
-
-                Console.WriteLine("Enter the state name");
-                string state = Console.ReadLine();
-
-                Console.WriteLine("Enter the zip code");
-                int zip = Convert.ToInt32(Console.ReadLine());
-
-                Console.WriteLine("Enter the phone number");
-                string phoneNumber = Console.ReadLine();
-
-                Console.WriteLine("Enter the email id");
-                string emailId = Console.ReadLine();
-
-
-                contacts[i] = new contactBook(firstName, lastName, city, state, zip, phoneNumber, emailId);
-
-            
-                list.Add(contacts[i]);
-             
-            }
-
-            displayContact();
-            editContact("venkey");
-            displayContact();
-            deleteContact("venkey");
-            displayContact();
-           
-        }
-
-        /// <summary>
-        /// Edits the contact.
-        /// </summary>
-        /// <param name="firstName">The first name.</param>
-        public static void editContact(string firstName)
-        {
-            foreach(var temp in list)
-            {
-                if(temp.getFirstName().Equals(firstName))
+                if (option == 1)
                 {
-                    Console.WriteLine("Enter the new Number for : "+firstName);
-                    // phoneBook[firstName]= Console.ReadLine();
-                    temp.setPhoneNumber(Console.ReadLine());
-                    break;
-                }
-            }
-        }
+                    obj.getInput();
 
-        /// <summary>
-        /// Deletes the contact.
-        /// </summary>
-        /// <param name="firstName">The first name.</param>
-        public static void deleteContact(string firstName)
-        {
-            foreach (var temp in list)
-            {
-                if (temp.getFirstName().Equals(firstName))
+                }
+                else if (option == 2)
                 {
-                    list.Remove(temp);
-                    break;
+
+                    obj.editContact();
                 }
-            }
+                else if (option == 3)
+                {
+
+                    obj.deleteContact();
+                }
+                else if (option == 4)
+                {
+                   obj.displayContact();
+                }
+                else
+                {
+                    Environment.Exit(1);
+                }
+            } while (option <= 5);
+
         }
 
-        /// <summary>
-        /// Displays the contact.
-        /// </summary>
-        public static void displayContact()
-        {
-            foreach (var temp in list)
-            {
-                Console.WriteLine("Name : " + temp.getFirstName() + "  Contact No : " + temp.getPhoneNumber());
-            }
-        }
+       
     }
 }
