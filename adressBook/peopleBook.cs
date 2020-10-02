@@ -12,7 +12,9 @@ namespace adressBook
         /// <summary>
         /// The list
         /// </summary>
-        static List<contactBook> list = new List<contactBook>(); 
+        List<contactBook> list = new List<contactBook>(); 
+
+
         /// <summary>
         /// Gets the input.
         /// </summary>
@@ -52,9 +54,11 @@ namespace adressBook
         /// <param name="firstName">The first name.</param>
         public  void editContact()
         {
+            int check = 0;
             if (list.Count == 0)
             {
                 Console.WriteLine("There are no contacts to Edit");
+                check = 1;
             }
             else
             {
@@ -67,8 +71,15 @@ namespace adressBook
                         Console.WriteLine("Enter the new Number for : " + firstName);
                         // phoneBook[firstName]= Console.ReadLine();
                         temp.setPhoneNumber(Console.ReadLine());
+                        check = 1;
+                        Console.WriteLine("Edited Successfully");
+
                         break;
                     }
+                }
+                if(check==0)
+                {
+                    Console.WriteLine("No contact saved for the given name");
                 }
             }
         }
@@ -79,9 +90,11 @@ namespace adressBook
         /// <param name="firstName">The first name.</param>
         public  void deleteContact()
         {
+            int check = 0;
             if (list.Count == 0)
             {
                 Console.WriteLine("There are no contacts to Delete");
+                check = 1;
             }
             else
             {
@@ -93,8 +106,15 @@ namespace adressBook
                     if (temp.getFirstName().Equals(firstName))
                     {
                         list.Remove(temp);
+                        check = 1;
+                        Console.WriteLine("Deleted Successfully");
+
                         break;
                     }
+                }
+                if(check==0)
+                {
+                    Console.WriteLine("No Contact Saved for given name");
                 }
             }
         }
@@ -104,9 +124,16 @@ namespace adressBook
         /// </summary>
         public  void displayContact()
         {
-            foreach (var temp in list)
+            if (list.Count == 0)
             {
-                Console.WriteLine("Name : " + temp.getFirstName() + "  Contact No : " + temp.getPhoneNumber());
+                Console.WriteLine("No contacts to Display");
+            }
+            else
+            {
+                foreach (var temp in list)
+                {
+                    Console.WriteLine("Name : " + temp.getFirstName() + "  Contact No : " + temp.getPhoneNumber());
+                }
             }
         }
     }

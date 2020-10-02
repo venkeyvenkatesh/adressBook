@@ -7,6 +7,9 @@ namespace adressBook
 {
     class Program
     {
+        
+        static Dictionary<string, peopleBook> dict = new Dictionary<string, peopleBook>();
+
 
         /// <summary>
         /// Defines the entry point of the application.
@@ -17,43 +20,73 @@ namespace adressBook
 
             Console.WriteLine("Welcome to Address Book program");
 
+            Console.WriteLine("How many people's contacts you want to add");
+
+            int n = Convert.ToInt32(Console.ReadLine());
             int option;
-            peopleBook obj = new peopleBook();
-
-            do
+            peopleBook[] obj = new peopleBook[n];
+            for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("Choose Your Option");
-                Console.WriteLine("1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit");
+                string name;
+                Console.WriteLine("Enter your name : ");
+                name = Console.ReadLine();
+                obj[i] = new peopleBook();
+                dict.Add(name, obj[i]);
 
-                option = Convert.ToInt32(Console.ReadLine());
-
-                if (option == 1)
-                {
-                    obj.getInput();
-
-                }
-                else if (option == 2)
+                do
                 {
 
-                    obj.editContact();
-                }
-                else if (option == 3)
-                {
+                    Console.WriteLine("Choose Your Option");
+                    Console.WriteLine("1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit");
 
-                    obj.deleteContact();
-                }
-                else if (option == 4)
-                {
-                   obj.displayContact();
-                }
-                else
-                {
-                    Environment.Exit(1);
-                }
-            } while (option <= 5);
+                    option = Convert.ToInt32(Console.ReadLine());
+
+                    if (option == 1)
+                    {
+                        obj[i].getInput();
+
+                    }
+                    else if (option == 2)
+                    {
+
+                        obj[i].editContact();
+                    }
+                    else if (option == 3)
+                    {
+
+                        obj[i].deleteContact();
+                    }
+                    else if (option == 4)
+                    {
+                        obj[i].displayContact();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                } while (option <= 5);
+
+                displayPersonContacts(name);
+            }
+
+
 
         }
 
-       
+        /// <summary>
+        /// Displays the person contacts.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        public static void displayPersonContacts(string name)
+        {
+            foreach (KeyValuePair<string,peopleBook> kvp in dict)
+            {
+                if (kvp.Key.Equals(name))
+                {
+                    Console.WriteLine("Hey " + name );
+                    kvp.Value.displayContact();
+                }
+            }
+        }
     }
 }
