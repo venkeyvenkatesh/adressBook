@@ -30,63 +30,62 @@ namespace adressBook
                 Console.WriteLine("Please Enter the proper first name");
                 firstName = Console.ReadLine();
             }
-            if (!Equals(firstName))
+            Console.WriteLine("Enter the last name");
+            string lastName = Console.ReadLine();
+            while (!validateString(lastName))
             {
-                Console.WriteLine("Enter the last name");
-                string lastName = Console.ReadLine();
-                while (!validateString(lastName))
-                {
-                    Console.WriteLine("Please Enter the proper Last name");
-                    lastName = Console.ReadLine();
-                }
-                Console.WriteLine("Enter the address");
-                string address = Console.ReadLine();
-                while (!validateString(address))
-                {
-                    Console.WriteLine("Enter the proper address");
-                    address = Console.ReadLine();
-                }
-                Console.WriteLine("Enter the city name");
-                string city = Console.ReadLine();
-                while (!validateString(city))
-                {
-                    Console.WriteLine("Please Enter the proper city name");
-                    city = Console.ReadLine();
-                }
-                Console.WriteLine("Enter the state name");
-                string state = Console.ReadLine();
-                while (!validateString(state))
-                {
-                    Console.WriteLine("Please Enter the proper state name");
-                    state = Console.ReadLine();
-                }
-                Console.WriteLine("Enter the zip code");
-                string zip = Console.ReadLine();
-                while (!validateZip(zip))
-                {
-                    Console.WriteLine("Please Enter the proper zip code");
-                    zip = Console.ReadLine();
-                }
+                Console.WriteLine("Please Enter the proper Last name");
+                lastName = Console.ReadLine();
+            }
+            Console.WriteLine("Enter the address");
+            string address = Console.ReadLine();
+            while (!validateString(address))
+            {
+                Console.WriteLine("Enter the proper address");
+                address = Console.ReadLine();
+            }
+            Console.WriteLine("Enter the city name");
+            string city = Console.ReadLine();
+            while (!validateString(city))
+            {
+                Console.WriteLine("Please Enter the proper city name");
+                city = Console.ReadLine();
+            }
+            Console.WriteLine("Enter the state name");
+            string state = Console.ReadLine();
+            while (!validateString(state))
+            {
+                Console.WriteLine("Please Enter the proper state name");
+                state = Console.ReadLine();
+            }
+            Console.WriteLine("Enter the zip code");
+            string zip = Console.ReadLine();
+            while (!validateZip(zip))
+            {
+                Console.WriteLine("Please Enter the proper zip code");
+                zip = Console.ReadLine();
+            }
 
 
-                Console.WriteLine("Enter the phone number");
+            Console.WriteLine("Enter the phone number");
 
-                string phoneNumber = Console.ReadLine();
-                while (!validatePhoneNumber(phoneNumber))
-                {
-                    Console.WriteLine("Please enter proper mobile number");
-                    phoneNumber = Console.ReadLine();
-                }
+            string phoneNumber = Console.ReadLine();
+            while (!validatePhoneNumber(phoneNumber))
+            {
+                Console.WriteLine("Please enter proper mobile number");
+                phoneNumber = Console.ReadLine();
+            }
 
-                Console.WriteLine("Enter the email id");
-                string emailId = Console.ReadLine();
-                while (!validateEmailId(emailId))
-                {
-                    Console.WriteLine("Please enter proper Email ID ");
-                    emailId = Console.ReadLine();
-                }
+            Console.WriteLine("Enter the email id");
+            string emailId = Console.ReadLine();
+            while (!validateEmailId(emailId))
+            {
+                Console.WriteLine("Please enter proper Email ID ");
+                emailId = Console.ReadLine();
+            }
 
-
+            if (!isContactPresent(firstName))
+            {
 
 
                 contact = new contactBook(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
@@ -94,7 +93,7 @@ namespace adressBook
             }
             else
             {
-                Console.WriteLine("\nSorry!!!! There is a contact already saved for the given first Name");
+                Console.WriteLine("\nSorry! There is contact saved for the given first Name");
             }
 
 
@@ -379,11 +378,11 @@ namespace adressBook
             }
         }
 
-        public bool Equals(string firstName)
+        public bool isContactPresent(string firstName)
         {
-            foreach (var contact in list)
+            foreach(var contact in list)
             {
-                if (contact.getFirstName()==firstName)
+                if(contact.getFirstName().Equals(firstName))
                 {
                     return true;
                 }

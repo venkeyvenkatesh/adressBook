@@ -28,7 +28,7 @@ namespace adressBook
             {
                  n = Convert.ToInt32(Console.ReadLine());
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 Console.WriteLine("You have entered wrong input");
             }
@@ -60,14 +60,14 @@ namespace adressBook
 
                         option = Convert.ToInt32(Console.ReadLine());
                     }
-                    catch(Exception e)
+                    catch(Exception)
                     {
                         Console.WriteLine("You have entered wrong input");
                     }
 
                     if (option == 1)
                     {
-                        obj[i].getInput();
+                        obj[i].addContact();
 
                     }
                     else if (option == 2)
