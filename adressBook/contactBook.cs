@@ -176,6 +176,11 @@ namespace adressBook
             this.phoneNumber = phoneNumber;
         }
 
+
+        /// <summary>
+        /// Sets the email identifier.
+        /// </summary>
+        /// <param name="emailId">The email identifier.</param>
         public void setEmailId(string emailId)
         {
             this.emailId=emailId;

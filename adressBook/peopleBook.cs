@@ -7,17 +7,17 @@ namespace adressBook
 {
 
 
-    class peopleBook
+  public class peopleBook
     {
 
         /// <summary>
         /// The list
         /// </summary>
         List<contactBook> list = new List<contactBook>();
-
+       public  static Dictionary<string,string> statewiseContact= new Dictionary<string,string>();
 
         /// <summary>
-        /// Gets the input.
+        /// Adds the contact.
         /// </summary>
         public void addContact()
         {
@@ -91,6 +91,8 @@ namespace adressBook
 
                 contact = new contactBook(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
                 list.Add(contact);
+
+                statewiseContact.Add(firstName, state);
             }
             else
             {
@@ -162,6 +164,12 @@ namespace adressBook
             }
         }
 
+
+        /// <summary>
+        /// Validates the email identifier.
+        /// </summary>
+        /// <param name="emailId">The email identifier.</param>
+        /// <returns></returns>
         public bool validateEmailId(string emailId)
         {
 
@@ -379,7 +387,13 @@ namespace adressBook
             }
         }
 
-        public bool Equals(string firstName)
+
+        /// <summary>
+        /// checks the euality with the specified first name.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <returns></returns>
+      public bool Equals(string firstName)
         {
             foreach (var contact in list)
             {

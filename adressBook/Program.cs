@@ -7,7 +7,7 @@ namespace adressBook
 {
     class Program
     {
-        
+
         static Dictionary<string, peopleBook> dict = new Dictionary<string, peopleBook>();
 
 
@@ -15,104 +15,167 @@ namespace adressBook
         /// Defines the entry point of the application.
         /// </summary>
         /// <param name="args">The arguments.</param>
-        static void Main(string[] args) 
+        static void Main(string[] args)
 
         {
             //variables
-            int n=0;
+
             int option = 0;
             Console.WriteLine("Welcome to Address Book program");
+            int choose = 0;
 
-            Console.WriteLine("How many people's contacts you want to add");
-            try
-            {
-                 n = Convert.ToInt32(Console.ReadLine());
-            }
-            catch(Exception)
-            {
-                Console.WriteLine("You have entered wrong input");
-            }
 
-            
-         
-            peopleBook[] obj = new peopleBook[n];
-            for (int i = 0; i < n; i++)
+
+            do
             {
-                string name;
-                Console.WriteLine("Enter your name : ");
-                name = Console.ReadLine();
-                while (!peopleBook.validateString(name))
+                Console.WriteLine("1.Add an Adress Book\n2.Display Address Book\n3.Search by State \n 4.Exit");
+                choose = Convert.ToInt32(Console.ReadLine());
+
+                if (choose == 1)
                 {
-                    Console.WriteLine("Please Enter the proper name ");
-                     name = Console.ReadLine();
+                    peopleBook obj = new peopleBook();
+
+                    string name;
+                    Console.WriteLine("Enter your name : ");
+                    name = Console.ReadLine();
+                    while (!peopleBook.validateString(name))
+                    {
+                        Console.WriteLine("Please Enter the proper name ");
+                        name = Console.ReadLine();
+                    }
+                    obj = new peopleBook();
+                    dict.Add(name, obj);
+
+                    do
+                    {
+
+                        Console.WriteLine("\n");
+                        Console.WriteLine("Choose Your Option");
+                        Console.WriteLine("1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit from your Address Book");
+                        try
+                        {
+
+                            option = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("You have entered wrong input");
+                        }
+
+                        if (option == 1)
+                        {
+                            obj.addContact();
+
+                        }
+                        else if (option == 2)
+                        {
+
+                            obj.editContact();
+                        }
+                        else if (option == 3)
+                        {
+
+                            obj.deleteContact();
+                        }
+                        else if (option == 4)
+                        {
+                            obj.displayContact();
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                        Console.WriteLine("\n");
+                    } while (option <= 5);
                 }
-                obj[i] = new peopleBook();
-                dict.Add(name, obj[i]);
-                
-                do
+                else if (choose == 2)
                 {
-                  
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Choose Your Option");
-                    Console.WriteLine("1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit");
-                    try
-                    {
+                    displayPersonContacts();
+                }
+                else if (choose == 3)
+                {
 
-                        option = Convert.ToInt32(Console.ReadLine());
-                    }
-                    catch(Exception)
-                    {
-                        Console.WriteLine("You have entered wrong input");
-                    }
+                    searchByState();
+                }
 
-                    if (option == 1)
-                    {
-                        obj[i].addContact();
-
-                    }
-                    else if (option == 2)
-                    {
-
-                        obj[i].editContact();
-                    }
-                    else if (option == 3)
-                    {
-
-                        obj[i].deleteContact();
-                    }
-                    else if (option == 4)
-                    {
-                        obj[i].displayContact();
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-                    Console.WriteLine("\n");
-                } while (option <= 5);
-
-                displayPersonContacts(name);
-            }
-
+                else if (choose == 4)
+                {
+                    break;
+                }
+            } while (choose <= 4);
 
 
         }
+
+
+
+
 
         /// <summary>
         /// Displays the person contacts.
         /// </summary>
         /// <param name="name">The name.</param>
-        public static void displayPersonContacts(string name)
+        public static void displayPersonContacts()
         {
-            foreach (KeyValuePair<string,peopleBook> kvp in dict)
+            int check = 0;
+            if (dict.Count == 0)
             {
-                if (kvp.Key.Equals(name))
+                Console.WriteLine("\nNo Address Books to Display\n");
+                check = 1;
+            }
+            else
+            {
+                Console.WriteLine("Enter your name to display your Address Book");
+                string name = Console.ReadLine();
+                foreach (KeyValuePair<string, peopleBook> kvp in dict)
                 {
-                    Console.WriteLine("Hey " + name );
-                    kvp.Value.displayContact();
+                    if (kvp.Key.Equals(name))
+                    {
+                        Console.WriteLine("Hey " + name);
+                        kvp.Value.displayContact();
+                        check = 1;
+
+                    }
+                }
+            }
+            if(check==0)
+            {
+                Console.WriteLine("\nNo Adress Book saved for the given name\n");
+            }
+        }
+
+
+        /// <summary>
+        /// Serch for the given contact based on state
+        /// </summary>
+
+        public static void searchByState()
+        {
+            if (peopleBook.statewiseContact.Count == 0)
+            {
+                Console.WriteLine("\nNo Address Book have been added to search\n");
+            }
+            else
+            {
+
+                Console.WriteLine("Enter the state name to search ");
+                string state = Console.ReadLine();
+                int count = 0;
+                foreach (var element in peopleBook.statewiseContact)
+                {
+                    if (element.Value.Equals(state))
+                    {
+                        Console.WriteLine("\n" + element.Key);
+                        count++;
+                    }
+                }
+                if (count == 0)
+                {
+                    Console.WriteLine("\nNo contacts saved for the given State Name\n");
                 }
             }
         }
+
     }
 }
