@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Transactions;
 
 namespace adressBook
@@ -9,7 +10,6 @@ namespace adressBook
     {
 
         static Dictionary<string, peopleBook> dict = new Dictionary<string, peopleBook>();
-
 
         /// <summary>
         /// Defines the entry point of the application.
@@ -103,11 +103,12 @@ namespace adressBook
                 {
                     searchByCity();
                 }
-                else if(choose==5)
+
+                else
                 {
                     break;
                 }
-            } while (choose <= 4);
+            } while (choose <= 6);
 
 
         }
@@ -143,7 +144,7 @@ namespace adressBook
                     }
                 }
             }
-            if(check==0)
+            if (check == 0)
             {
                 Console.WriteLine("\nNo Adress Book saved for the given name\n");
             }
@@ -151,7 +152,7 @@ namespace adressBook
 
 
         /// <summary>
-        /// Serch for the given contact based on state
+        /// Search for the given contact based on state
         /// </summary>
 
         public static void searchByState()
@@ -178,9 +179,19 @@ namespace adressBook
                 {
                     Console.WriteLine("\nNo contacts saved for the given State Name\n");
                 }
+                else
+                {
+                    Console.WriteLine("No of contacts in the " + state + " state is " + count);
+                    //  countBasedOnState.Add(state, count);
+
+                }
             }
         }
 
+
+        /// <summary>
+        /// Search for the given contact based on City
+        /// </summary>
         public static void searchByCity()
         {
             if (peopleBook.citywiseContact.Count == 0)
@@ -191,7 +202,7 @@ namespace adressBook
             {
 
                 Console.WriteLine("Enter the city name to search ");
-                string city= Console.ReadLine();
+                string city = Console.ReadLine();
                 int count = 0;
                 foreach (var element in peopleBook.citywiseContact)
                 {
@@ -205,8 +216,15 @@ namespace adressBook
                 {
                     Console.WriteLine("\nNo contacts saved for the given city Name\n");
                 }
+                else
+                {
+                    Console.WriteLine("No of contacts in the " + city + " city is " + count);
+                }
             }
         }
+
+
+
 
     }
 }
