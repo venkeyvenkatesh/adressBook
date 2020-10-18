@@ -28,7 +28,7 @@ namespace adressBook
 
             do
             {
-                Console.WriteLine("1.Add an Adress Book\n2.Display Address Book\n3.Search by State \n 4.Exit");
+                Console.WriteLine("1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Exit");
                 choose = Convert.ToInt32(Console.ReadLine());
 
                 if (choose == 1)
@@ -100,6 +100,10 @@ namespace adressBook
                 }
 
                 else if (choose == 4)
+                {
+                    searchByCity();
+                }
+                else if(choose==5)
                 {
                     break;
                 }
@@ -173,6 +177,33 @@ namespace adressBook
                 if (count == 0)
                 {
                     Console.WriteLine("\nNo contacts saved for the given State Name\n");
+                }
+            }
+        }
+
+        public static void searchByCity()
+        {
+            if (peopleBook.citywiseContact.Count == 0)
+            {
+                Console.WriteLine("\nNo Address Book have been added to search\n");
+            }
+            else
+            {
+
+                Console.WriteLine("Enter the city name to search ");
+                string city= Console.ReadLine();
+                int count = 0;
+                foreach (var element in peopleBook.citywiseContact)
+                {
+                    if (element.Value.Equals(city))
+                    {
+                        Console.WriteLine("\n" + element.Key);
+                        count++;
+                    }
+                }
+                if (count == 0)
+                {
+                    Console.WriteLine("\nNo contacts saved for the given city Name\n");
                 }
             }
         }

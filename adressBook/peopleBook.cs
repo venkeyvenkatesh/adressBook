@@ -15,7 +15,7 @@ namespace adressBook
         /// </summary>
         List<contactBook> list = new List<contactBook>();
        public  static Dictionary<string,string> statewiseContact= new Dictionary<string,string>();
-
+        public static Dictionary<string, string> citywiseContact = new Dictionary<string, string>();
         /// <summary>
         /// Adds the contact.
         /// </summary>
@@ -93,6 +93,7 @@ namespace adressBook
                 list.Add(contact);
 
                 statewiseContact.Add(firstName, state);
+                citywiseContact.Add(firstName, city);
             }
             else
             {
