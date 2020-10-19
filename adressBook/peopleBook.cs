@@ -13,7 +13,7 @@ namespace adressBook
         /// <summary>
         /// The list
         /// </summary>
-        List<contactBook> list = new List<contactBook>();
+       public List<contactBook> list = new List<contactBook>();
        public  static Dictionary<string,string> statewiseContact= new Dictionary<string,string>();
         public static Dictionary<string, string> citywiseContact = new Dictionary<string, string>();
 
@@ -377,14 +377,16 @@ namespace adressBook
         {
             if (list.Count == 0)
             {
-                Console.WriteLine("No contacts to Display");
+                Console.WriteLine("\nNo contacts to Display\n");
+             
             }
+
             else
             {
-                Console.WriteLine("FirstName\tLastName\taddress\tCity\tState\tZip\tPhoneNumber\tEmail-Id");
+             
                 foreach (var temp in list)
                 {
-
+                    Console.WriteLine("FirstName\tLastName\taddress\tCity\tState\tZip\tPhoneNumber\tEmail-Id");
 
                     Console.WriteLine(temp.getFirstName() + "\t\t" + temp.getLastName() + "\t\t" + temp.getAddress() + "\t" + temp.getCity() + "\t" + temp.getState() + "\t" + temp.getZip() + "\t" + temp.getPhoneNumber() + "\t" + temp.getEmailId());
                 }

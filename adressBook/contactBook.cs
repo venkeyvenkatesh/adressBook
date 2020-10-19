@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace adressBook
 {
-    class contactBook
+   public class contactBook
     {
         //variables
         private string firstName;

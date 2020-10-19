@@ -6,7 +6,7 @@ using System.Transactions;
 
 namespace adressBook
 {
-    class Program
+    public class Program
     {
 
         static Dictionary<string, peopleBook> dict = new Dictionary<string, peopleBook>();
@@ -21,16 +21,23 @@ namespace adressBook
             //variables
 
             int option = 0;
-            Console.WriteLine("Welcome to Address Book program");
+            Console.WriteLine("Welcome to Address Book program\n");
             int choose = 0;
 
 
 
             do
             {
-                Console.WriteLine("1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Exit");
-                choose = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\n1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Exit");
 
+                try
+                {
+                    choose = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("You have entered wrong input");
+                }
                 if (choose == 1)
                 {
                     peopleBook obj = new peopleBook();
@@ -51,7 +58,7 @@ namespace adressBook
 
                         Console.WriteLine("\n");
                         Console.WriteLine("Choose Your Option");
-                        Console.WriteLine("1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit from your Address Book");
+                        Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit from your Address Book");
                         try
                         {
 
@@ -167,12 +174,17 @@ namespace adressBook
                 Console.WriteLine("Enter the state name to search ");
                 string state = Console.ReadLine();
                 int count = 0;
-                foreach (var element in peopleBook.statewiseContact)
+                foreach (var book in dict)
                 {
-                    if (element.Value.Equals(state))
+
+                    foreach (var contact in book.Value.list)
                     {
-                        Console.WriteLine("\n" + element.Key);
-                        count++;
+                        if (contact.getState().Equals(state))
+                        {
+                            //Console.WriteLine("\n" + element.Key);
+                            book.Value.displayContact();
+                            count++;
+                        }
                     }
                 }
                 if (count == 0)
@@ -204,12 +216,17 @@ namespace adressBook
                 Console.WriteLine("Enter the city name to search ");
                 string city = Console.ReadLine();
                 int count = 0;
-                foreach (var element in peopleBook.citywiseContact)
+                foreach (var book in dict)
                 {
-                    if (element.Value.Equals(city))
+
+                    foreach (var contact in book.Value.list)
                     {
-                        Console.WriteLine("\n" + element.Key);
-                        count++;
+                        if (contact.getCity().Equals(city))
+                        {
+                            //Console.WriteLine("\n" + element.Key);
+                            book.Value.displayContact();
+                            count++;
+                        }
                     }
                 }
                 if (count == 0)
