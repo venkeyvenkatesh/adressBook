@@ -164,7 +164,7 @@ namespace adressBook
 
         public static void searchByState()
         {
-            if (peopleBook.statewiseContact.Count == 0)
+            if (dict.Count == 0)
             {
                 Console.WriteLine("\nNo Address Book have been added to search\n");
             }
@@ -193,9 +193,8 @@ namespace adressBook
                 }
                 else
                 {
-                    Console.WriteLine("No of contacts in the " + state + " state is " + count);
-                    //  countBasedOnState.Add(state, count);
-
+                    Console.WriteLine("Number of contacts in the " + state + " state is " + count);
+                 
                 }
             }
         }
@@ -206,7 +205,7 @@ namespace adressBook
         /// </summary>
         public static void searchByCity()
         {
-            if (peopleBook.citywiseContact.Count == 0)
+            if (dict.Count == 0)
             {
                 Console.WriteLine("\nNo Address Book have been added to search\n");
             }
