@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
-
+using System.IO;
 namespace adressBook
 {
 
@@ -17,8 +17,8 @@ namespace adressBook
        public List<contactBook> list = new List<contactBook>();
        public  static Dictionary<string,string> statewiseContact= new Dictionary<string,string>();
         public static Dictionary<string, string> citywiseContact = new Dictionary<string, string>();
+        
 
-      
         /// <summary>
         /// Adds the contact.
         /// </summary>
@@ -92,8 +92,14 @@ namespace adressBook
 
 
 
+
+                string path = "E:\\ContactFIle\\contacts.txt";
+
+
                 contact = new contactBook(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
                 list.Add(contact);
+                string text=contact.getFirstName()+"\t"+contact.getLastName() + "\t"+contact.getAddress() + "\t" + contact.getCity() + "\t" + contact.getState() + "\t" + contact.getZip() + "\t" + contact.getPhoneNumber() + "\t" + contact.getEmailId()+"\n";
+                File.AppendAllText(path,text);
 
                 statewiseContact.Add(firstName, state);
                 citywiseContact.Add(firstName, city);
@@ -440,6 +446,6 @@ namespace adressBook
 
         }
 
-
+      
     }
 }
