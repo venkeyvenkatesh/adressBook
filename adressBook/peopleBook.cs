@@ -385,7 +385,10 @@ namespace adressBook
 
             else
             {
-                SortBasedOnName();
+                 SortBasedOnName();
+             //   SortBasedOnCity();
+             //   SortBasedOnState();
+             //   SortBasedOnZip();
                 Console.WriteLine("FirstName\tLastName\taddress\tCity\tState\tZip\tPhoneNumber\tEmail-Id");
                 foreach (var temp in list)
                 {
@@ -415,10 +418,25 @@ namespace adressBook
 
 
         }
-
+        
         public void SortBasedOnName()
         {
             list = list.OrderBy(o => o.getFirstName()).ToList();
+
+        }
+        public void SortBasedOnCity()
+        {
+            list = list.OrderBy(o => o.getCity()).ToList();
+
+        }
+        public void SortBasedOnState()
+        {
+            list = list.OrderBy(o => o.getState()).ToList();
+
+        }
+        public void SortBasedOnZip()
+        {
+            list = list.OrderBy(o => o.getZip()).ToList();
 
         }
 
