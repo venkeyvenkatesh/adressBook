@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "d7GdaBKZlL5JDtTKYzNLfZ8aTGMhBW3X2C1sy8GAUN3xImUFxgwsfpB9YlXVISUFMFNk5XVzVBMOkD3lOsbD4w==",
+  "dgSpecHash": "sd4lZ+bIHFSC1Z1S5p5AOTrsYDHUWbu6PgjEf3TfZfNDyvTRQU3qKUFQKqcNqda1fSFnRpot2Wz/Cw4+c7XBtg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\adressBook\\adressBook\\adressBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\csvhelper\\15.0.8\\csvhelper.15.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }

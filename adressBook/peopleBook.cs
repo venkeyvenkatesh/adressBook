@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using System.Net.Mail;
 using System.Globalization;
 using CsvHelper;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace adressBook
 {
@@ -28,7 +30,7 @@ namespace adressBook
         public void writeIntoCSV()
         {
             string exportPath = @"C:\Users\Administrator\source\repos\adressBook\adressBook\contacts.csv";
-            // peopleBook obj = new peopleBook();
+           
             using (StreamWriter sw = new StreamWriter(exportPath))
             using (CsvWriter writer = new CsvWriter(sw, CultureInfo.InvariantCulture))
             {
@@ -52,13 +54,48 @@ namespace adressBook
                 }
             }
         }
+
+        public void writeIntoJSON()
+        {
+            String importPath = @"C:\Users\Administrator\source\repos\adressBook\adressBook\contacts.csv";
+            string exportPath = @"C:\Users\Administrator\source\repos\adressBook\adressBook\contacts.json";
+            using (StreamReader sr = new StreamReader(importPath))
+            using (CsvReader reader = new CsvReader(sr, CultureInfo.InvariantCulture))
+            {
+                var records = reader.GetRecords<contactBook>().ToList();
+
+                JsonSerializer serializer = new JsonSerializer();
+                using (StreamWriter sw = new StreamWriter(exportPath)) 
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, records);
+                }
+            }
+
+
+        }
+
+        public void DisplayJsonFile()
+        {
+            string exportPath = @"C:\Users\Administrator\source\repos\adressBook\adressBook\contacts.json";
+
+            IList<contactBook> contactBooks = JsonConvert.DeserializeObject<IList<contactBook>>(File.ReadAllText(exportPath));
+
+            foreach(var contact in contactBooks)
+            {
+               
+                Console.WriteLine(contact.FirstName + "\t" + contact.LastName + "\t" + contact.Address + "\t" + contact.City + "\t" + contact.State + "\t" + contact.PhoneNumber + "\t" + contact.EmailId);
+
+            }
+
+        }
         /// <summary>
         /// Adds the contact.
         /// </summary>
         public void addContact()
         {
             contactBook contact;
-            // int i = 0;
+           
             Console.WriteLine("Enter the first name");
             string FirstName = Console.ReadLine();
             while (!validateString(FirstName))

@@ -29,7 +29,7 @@ namespace adressBook
 
             do
             {
-                Console.WriteLine("\n1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Edit Address Book\n6.Exit");
+                Console.WriteLine("\n1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Edit or Enter into Address Book\n6.Exit");
 
                 try
                 {
@@ -59,7 +59,7 @@ namespace adressBook
 
                         Console.WriteLine("\n");
                         Console.WriteLine("Choose Your Option");
-                        Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Display CSV file\n6.Exit from your Address Book");
+                        Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Display CSV file\n6.Dsiplay Json File \n7.Exit from your Address Book");
                         try
                         {
 
@@ -74,6 +74,7 @@ namespace adressBook
                         {
                             obj.addContact();
                             obj.writeIntoCSV();
+                            obj.writeIntoJSON();
 
                         }
                         else if (option == 2)
@@ -81,12 +82,14 @@ namespace adressBook
 
                             obj.editContact();
                             obj.writeIntoCSV();
+                            obj.writeIntoJSON();
                         }
                         else if (option == 3)
                         {
 
                             obj.deleteContact();
                             obj.writeIntoCSV();
+                            obj.writeIntoJSON();
                         }
                         else if (option == 4)
                         {
@@ -98,13 +101,17 @@ namespace adressBook
                         {
                             obj.DisplayCsvFile();
                         }
+                        else if(option==6)
+                        {
+                            obj.DisplayJsonFile();
+                        }
                         else
                         {
                             break;
                         }
 
                         Console.WriteLine("\n");
-                    } while (option <= 6);
+                    } while (option <= 7);
                 }
                 else if (choose == 2)
                 {
@@ -139,9 +146,10 @@ namespace adressBook
                             do
                             {
                                 obj.writeIntoCSV();
+                                obj.writeIntoJSON();
                                 Console.WriteLine("\n");
                                 Console.WriteLine("Choose Your Option");
-                                Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Display CSV file\n6.Exit from your Address Book");
+                                Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Display CSV file\n6.Display Json File\n7.Exit from your Address Book");
                                 try
                                 {
 
@@ -156,19 +164,23 @@ namespace adressBook
                                 {
                                     obj.addContact();
                                     obj.writeIntoCSV();
+                                    obj.writeIntoJSON();
                                 }
                                 else if (option == 2)
                                 {
 
                                     obj.editContact();
                                     obj.writeIntoCSV();
+                                    obj.writeIntoJSON();
                                         
                                 }
                                 else if (option == 3)
                                 {
 
                                     obj.deleteContact();
-                                   obj.writeIntoCSV();
+                                 
+                                    obj.writeIntoCSV();
+                                    obj.writeIntoJSON();
                                 }
                                 else if (option == 4)
                                 {
@@ -179,6 +191,10 @@ namespace adressBook
                                 {
                                     obj.DisplayCsvFile();
                                 }
+                                else if(option==6)
+                                {
+                                    obj.DisplayJsonFile();
+                                }
                                 else
                                 {
                                     break;
@@ -187,7 +203,7 @@ namespace adressBook
                                 check = 1;
                                 Console.WriteLine("\n");
                                 //break;
-                            } while (option <= 6);
+                            } while (option <= 7);
                         }
                     }
                     if(check==0)
