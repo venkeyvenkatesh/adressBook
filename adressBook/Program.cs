@@ -22,14 +22,14 @@ namespace adressBook
             //variables
 
             int option = 0;
-            Console.WriteLine("Welcome to Address Book program\n");
+            Console.WriteLine("Welcome to Address Book program");
             int choose = 0;
 
 
 
             do
             {
-                Console.WriteLine("\n1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Exit");
+                Console.WriteLine("\n1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Edit Address Book\n6.Exit");
 
                 try
                 {
@@ -59,7 +59,7 @@ namespace adressBook
 
                         Console.WriteLine("\n");
                         Console.WriteLine("Choose Your Option");
-                        Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Exit from your Address Book");
+                        Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Display CSV file\n6.Exit from your Address Book");
                         try
                         {
 
@@ -73,21 +73,30 @@ namespace adressBook
                         if (option == 1)
                         {
                             obj.addContact();
+                            obj.writeIntoCSV();
 
                         }
                         else if (option == 2)
                         {
 
                             obj.editContact();
+                            obj.writeIntoCSV();
                         }
                         else if (option == 3)
                         {
 
                             obj.deleteContact();
+                            obj.writeIntoCSV();
                         }
                         else if (option == 4)
                         {
                             obj.displayContact();
+
+                        }
+                       
+                        else if(option==5)
+                        {
+                            obj.DisplayCsvFile();
                         }
                         else
                         {
@@ -95,7 +104,7 @@ namespace adressBook
                         }
 
                         Console.WriteLine("\n");
-                    } while (option <= 5);
+                    } while (option <= 6);
                 }
                 else if (choose == 2)
                 {
@@ -111,12 +120,87 @@ namespace adressBook
                 {
                     searchByCity();
                 }
+                else if(choose==5)
+                {
+                    string name;
+                    Console.WriteLine("Enter your name : ");
+                    name = Console.ReadLine();
+                    while (!peopleBook.validateString(name))
+                    {
+                        Console.WriteLine("Please Enter the proper name ");
+                        name = Console.ReadLine();
+                    }
+                    int check = 0;
+                    foreach(var element in dict)
+                    {
+                        if(element.Key.Equals(name))
+                        {
+                            var obj = element.Value;
+                            do
+                            {
+                                obj.writeIntoCSV();
+                                Console.WriteLine("\n");
+                                Console.WriteLine("Choose Your Option");
+                                Console.WriteLine("\n1.Add new contact\n2.Edit the contact\n3.Delete the contact\n4.Display all contact\n5.Display CSV file\n6.Exit from your Address Book");
+                                try
+                                {
 
+                                    option = Convert.ToInt32(Console.ReadLine());
+                                }
+                                catch (Exception)
+                                {
+                                    Console.WriteLine("You have entered wrong input");
+                                }
+
+                                if (option == 1)
+                                {
+                                    obj.addContact();
+                                    obj.writeIntoCSV();
+                                }
+                                else if (option == 2)
+                                {
+
+                                    obj.editContact();
+                                    obj.writeIntoCSV();
+                                        
+                                }
+                                else if (option == 3)
+                                {
+
+                                    obj.deleteContact();
+                                   obj.writeIntoCSV();
+                                }
+                                else if (option == 4)
+                                {
+                                    obj.displayContact();
+                                }
+                              
+                                else if (option == 5)
+                                {
+                                    obj.DisplayCsvFile();
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                              
+                                check = 1;
+                                Console.WriteLine("\n");
+                                //break;
+                            } while (option <= 6);
+                        }
+                    }
+                    if(check==0)
+                    {
+                        Console.WriteLine("No address Book found for the given name");
+                    }
+                }
                 else
                 {
 
                     string path = "E:\\ContactFIle\\contacts.txt";
                     File.WriteAllText(path,string.Empty);
+                    
                     break;
                 }
             } while (choose <= 6);
@@ -126,7 +210,7 @@ namespace adressBook
 
 
 
-
+      
 
         /// <summary>
         /// Displays the person contacts.
@@ -183,7 +267,7 @@ namespace adressBook
 
                     foreach (var contact in book.Value.list)
                     {
-                        if (contact.getState().Equals(state))
+                        if (contact.State.Equals(state))
                         {
                             //Console.WriteLine("\n" + element.Key);
                             book.Value.displayContact();
@@ -224,7 +308,7 @@ namespace adressBook
 
                     foreach (var contact in book.Value.list)
                     {
-                        if (contact.getCity().Equals(city))
+                        if (contact.City.Equals(city))
                         {
                             //Console.WriteLine("\n" + element.Key);
                             book.Value.displayContact();

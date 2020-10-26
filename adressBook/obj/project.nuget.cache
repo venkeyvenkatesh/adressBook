@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "DhhWG3Nu3bcOtflpWN6Y7qr9Q5IOC3UpYdqgbNP5hiX+tXL2EXXtF7f0eDeBAPdSItKCjjgMxFjTbD/Hnu1UZA==",
+  "dgSpecHash": "d7GdaBKZlL5JDtTKYzNLfZ8aTGMhBW3X2C1sy8GAUN3xImUFxgwsfpB9YlXVISUFMFNk5XVzVBMOkD3lOsbD4w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\adressBook\\adressBook\\adressBook.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\csvhelper\\15.0.8\\csvhelper.15.0.8.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

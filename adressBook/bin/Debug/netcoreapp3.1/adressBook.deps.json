@@ -7,10 +7,25 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "adressBook/1.0.0": {
+        "dependencies": {
+          "CsvHelper": "15.0.8"
+        },
         "runtime": {
           "adressBook.dll": {}
         }
-      }
+      },
+      "CsvHelper/15.0.8": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/CsvHelper.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.8.0"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.5.0": {}
     }
   },
   "libraries": {
@@ -18,6 +33,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CsvHelper/15.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S/EOFs0QiyX1auRZET2lqyXLheSzVYbqn6PkMBOHi28qMepDqI+5FXDb9plYU8kMB2jIADOp+zuBKn+OX6N3Uw==",
+      "path": "csvhelper/15.0.8",
+      "hashPath": "csvhelper.15.0.8.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "path": "microsoft.csharp/4.5.0",
+      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
     }
   }
 }
