@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Transactions;
 
 namespace adressBook
@@ -113,6 +114,9 @@ namespace adressBook
 
                 else
                 {
+
+                    string path = "E:\\ContactFIle\\contacts.txt";
+                    File.WriteAllText(path,string.Empty);
                     break;
                 }
             } while (choose <= 6);

@@ -4,6 +4,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System.IO;
+using System.Threading;
+using System.Runtime.CompilerServices;
+using System.Net.Mail;
+
 namespace adressBook
 {
 
@@ -185,8 +189,7 @@ namespace adressBook
         {
 
             String reg = "(^[a-zA-Z0-9]{1,}([+-_.][a-zA-Z0-9]{1,}){0,}@[a-zA-Z0-9]{1,}(\\.[a-zA-Z]{1,}){0,1}(\\.[a-zA-Z]{2,})$)";
-            ;
-
+            
             Regex re = new Regex(reg);
             if (re.IsMatch(emailId))
             {
@@ -204,6 +207,8 @@ namespace adressBook
         /// </summary>
         public void editContact()
         {
+            string oldFirstName;
+         
             int check = 0;
             int choice = 0;
             if (list.Count == 0)
@@ -224,6 +229,7 @@ namespace adressBook
                 {
                     if (temp.getFirstName().Equals(firstName))
                     {
+                        oldFirstName = temp.getFirstName();
                         Console.WriteLine("Select which field you want to edit");
 
                         Console.WriteLine("1.FirstName\n2.LastName\n3.Address\n4.City\n5.State\n6.Zip\n7.Phone Number\n8.Email Id");
@@ -237,6 +243,7 @@ namespace adressBook
                         }
                         if (choice == 1)
                         {
+                        
                             Console.WriteLine("Enter the new First Name");
                             firstName = Console.ReadLine();
                             while (!validateString(firstName))
@@ -245,9 +252,11 @@ namespace adressBook
                                 firstName = Console.ReadLine();
                             }
                             temp.setFirstName(firstName);
+                      
                         }
                         else if (choice == 2)
                         {
+                          
                             Console.WriteLine("Enter the new Last Name");
                             string lastName = Console.ReadLine();
                             while (!validateString(lastName))
@@ -256,9 +265,11 @@ namespace adressBook
                                 lastName = Console.ReadLine();
                             }
                             temp.setLastName(lastName);
+                       
                         }
                         else if (choice == 3)
                         {
+                       
                             Console.WriteLine("Enter the new Address");
                             string address = Console.ReadLine();
                             while (!validateString(address))
@@ -267,9 +278,11 @@ namespace adressBook
                                 address = Console.ReadLine();
                             }
                             temp.setAddress(address);
+                        
                         }
                         else if (choice == 4)
                         {
+                        
                             Console.WriteLine("Enter the new City name ");
                             string city = Console.ReadLine();
                             while (!validateString(city))
@@ -278,9 +291,11 @@ namespace adressBook
                                 city = Console.ReadLine();
                             }
                             temp.setCity(city);
+                       
                         }
                         else if (choice == 5)
                         {
+                         
                             Console.WriteLine("Enter the new state name ");
                             string state = Console.ReadLine();
                             while (!validateString(state))
@@ -289,9 +304,11 @@ namespace adressBook
                                 state = Console.ReadLine();
                             }
                             temp.setState(state);
+                    
                         }
                         else if (choice == 6)
                         {
+                       
                             Console.WriteLine("Enter the new Zip ");
                             string zip = Console.ReadLine();
                             while (!validateZip(zip))
@@ -300,9 +317,11 @@ namespace adressBook
                                 zip = Console.ReadLine();
                             }
                             temp.setZip(zip);
+                        
                         }
                         else if (choice == 7)
                         {
+                           
                             Console.WriteLine("Enter the new phone number ");
                             string phoneNumber = Console.ReadLine();
                             while (!validatePhoneNumber(phoneNumber))
@@ -311,10 +330,12 @@ namespace adressBook
                                 phoneNumber = Console.ReadLine();
                             }
                             temp.setPhoneNumber(phoneNumber);
+                      
 
                         }
                         else
                         {
+                          
                             Console.WriteLine("Enter the new Email Id");
                             string emailId = Console.ReadLine();
                             while (!validateEmailId(emailId))
@@ -323,10 +344,30 @@ namespace adressBook
                                 emailId = Console.ReadLine();
                             }
                             temp.setEmailId(emailId);
+                        
                         }
 
                         check = 1;
                         Console.WriteLine("Edited Successfully");
+                        string path = "E:\\ContactFIle\\contacts.txt";
+                       
+                        string[] lines = File.ReadAllLines(path);
+                        List<string> fileList = lines.ToList();
+                        int count = 0;
+                        foreach(var line in lines)
+                        {
+                            count++;
+                            if(line.Contains(oldFirstName))
+                            {
+                                string text = temp.getFirstName() + "\t" + temp.getLastName() + "\t" + temp.getAddress() + "\t" + temp.getCity() + "\t" + temp.getState() + "\t" + temp.getZip() + "\t" + temp.getPhoneNumber() + "\t" + temp.getEmailId() + "\n";
+
+                                fileList[count-1] = text;
+
+                                break;
+                            }
+                        }
+                        File.WriteAllLines(path, fileList.ToArray());
+                       
 
                         break;
                     }
@@ -343,6 +384,9 @@ namespace adressBook
         /// </summary>
         public void deleteContact()
         {
+
+            string path = "E:\\ContactFIle\\contacts.txt";
+            string[] lines = File.ReadAllLines(path);
             int check = 0;
             if (list.Count == 0)
             {
@@ -365,8 +409,21 @@ namespace adressBook
                     {
                         list.Remove(temp);
                         check = 1;
+                        int count = 0;
                         Console.WriteLine("Deleted Successfully");
-
+                        foreach(var line in lines)
+                        {
+                            count++;
+                            if(line.Contains(temp.getFirstName()))
+                                {
+                              
+                                List<string> listFile = lines.ToList();
+                                listFile.RemoveAt(count-1);
+                                File.WriteAllLines(path, listFile.ToArray());
+                                break;
+                            }
+                        }
+                     
                         break;
                     }
                 }
