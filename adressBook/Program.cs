@@ -29,7 +29,7 @@ namespace adressBook
 
             do
             {
-                Console.WriteLine("\n1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Edit or Enter into Address Book\n6.Exit");
+                Console.WriteLine("\n1.Add an Adress Book\n2.Display Address Book\n3.Search by State\n4.Search by City \n5.Edit or Enter into Address Book\n6.Display DB \n 7.Exit");
 
                 try
                 {
@@ -211,6 +211,13 @@ namespace adressBook
                         Console.WriteLine("No address Book found for the given name");
                     }
                 }
+             
+                      else if (choose == 6)
+                    {
+                        AdressBookDB db = new AdressBookDB();
+                    db.getAllContacts();
+                }
+                
                 else
                 {
 
@@ -219,7 +226,7 @@ namespace adressBook
                     
                     break;
                 }
-            } while (choose <= 6);
+            } while (choose <= 7);
 
 
         }
